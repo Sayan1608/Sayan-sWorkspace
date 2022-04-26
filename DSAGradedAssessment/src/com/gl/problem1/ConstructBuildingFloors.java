@@ -10,7 +10,7 @@ public class ConstructBuildingFloors {
 	public void constructBuilding(int N) {
 
 		Stack<Integer> floorStack = new Stack<Integer>();
-		Stack<Integer> tempSatack = new Stack<Integer>();
+		Stack<Integer> tempStack = new Stack<Integer>();
 		int count = N;
 
 		int[][] temp = new int[N][N];
@@ -28,14 +28,14 @@ public class ConstructBuildingFloors {
 				continue;
 			}
 			
-			if(tempSatack.search(size)!=-1) {
+			if(tempStack.search(size)!=-1) {
 				System.out.println("Size already present");
 				i--;
 				continue;
 			}
 			floorStack.push(size);
-			tempSatack.push(size);
-//			System.out.println("top -> " + floorStack.peek());
+			tempStack.push(size);
+			System.out.println("top -> " + floorStack.peek());
 			k = 0;
 			while (!floorStack.isEmpty() && count == floorStack.peek()) {
 				count--;
@@ -45,10 +45,11 @@ public class ConstructBuildingFloors {
 			}
 			sort(temp[i]);
 		}
-		
+		i--;
 		while(!floorStack.isEmpty()) {
-			temp[--i][k++] = floorStack.pop();
+			temp[i][k++] = floorStack.pop();
 		}
+		sort(temp[i]);
 
 //		for (i = 0; i < temp.length; i++) {
 //		for (int j = 0; j < N; j++) {
@@ -65,7 +66,7 @@ public class ConstructBuildingFloors {
 			}
 		}
 		
-		tempSatack.clear();
+		tempStack.clear();
 
 	}
 
