@@ -57,14 +57,7 @@ public class BSTtoRightSkewed {
 		return root;
 	}
 
-//	public void inOrderTraversal(Node root) {
-//		if (root == null)
-//			return;
-//		inOrderTraversal(root.left);
-//		System.out.print(root.key + " ");
-//		inOrderTraversal(root.right);
-//
-//	}
+
 
 	public void inOrderTraversal(Node root) {
 

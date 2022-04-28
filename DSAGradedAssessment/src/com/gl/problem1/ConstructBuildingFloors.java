@@ -1,11 +1,36 @@
 package com.gl.problem1;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class ConstructBuildingFloors {
 
 	private static Scanner in = new Scanner(System.in);
+	static ArrayList<Integer> tempList = new ArrayList<Integer>();
+	
+	/*
+	 * Algorithm:
+	 * 
+	 * 1)Take 2 stacks one is main stack where both push and pop operations would be performed
+	 * and a temp stack where we will only push the values (for checking duplicates)
+	 * 
+	 * 2)Push the floor size available on each day onto the main stack.(Arrange in ascending
+	 * order and push again in stack so that greatest size floor will be on top.
+	 * 3)Define a var counter which will keep track of the no of floors constructed
+	 * 
+	 * 4)Pop from stack if top of stack equals the counter value and store the values
+	 * inside a 2D temp array, descrement counter by 1 parallely when this condition is hit.
+	 * 
+	 * 5)Sort the floor sizes for each day in descending order.
+	 * 
+	 * 6)Pop all the elements from the stack till its empty and add to the temp array's last day
+	 * 
+	 * 7)Now iterate through the temp array and print the values for each day only for non zero values.
+	 * 
+	 * 
+	 */
 
 	public void constructBuilding(int N) {
 
@@ -36,6 +61,18 @@ public class ConstructBuildingFloors {
 			floorStack.push(size);
 			tempStack.push(size);
 			System.out.println("top -> " + floorStack.peek());
+			
+			while(!floorStack.isEmpty()) {
+				tempList.add(floorStack.pop());
+			}
+			
+			Collections.sort(tempList);
+			
+			for(int val : tempList) {
+				floorStack.push(val);
+			}
+			tempList.clear();
+			
 			k = 0;
 			while (!floorStack.isEmpty() && count == floorStack.peek()) {
 				count--;
