@@ -51,6 +51,7 @@ public class MoviesDAO {
 		}
 	}
 	
+	// Update Operation
 	public void updateData(Connection conn) {
 		String query = "update movie_details set id = ? where id = ?";
 		try {
@@ -69,6 +70,7 @@ public class MoviesDAO {
 		
 	}
 	
+	// Delete Operation
 	public void deleteMovie(Connection conn) {
 		String query = "delete from movie_details where id = ?";
 		try {
